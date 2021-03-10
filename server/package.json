@@ -1,0 +1,20 @@
+{
+  "name": "grove-backend",
+  "version": "1.0.0",
+  "description": "This is the OpenAPI spec defining the data and queries that the Grove database can return. See our whole project at [our project site](https://groveapp.github.io). For     this sample, you can use the api key `special-key` to test the authorization     filters.",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "oas3-tools": "^2.2.2"
+  }
+}
