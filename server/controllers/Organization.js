@@ -14,7 +14,7 @@ module.exports.addOrg = function addOrg (req, res, next, body) {
 };
 
 module.exports.updateOrg = function updateOrg (req, res, next, body) {
-  Pet.updateOrg(body)
+  Organization.updateOrg(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
