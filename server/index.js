@@ -6,6 +6,16 @@ var http = require('http');
 var oas3Tools = require('oas3-tools');
 var serverPort = 8080;
 
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+
+
 // swaggerRouter configuration
 var options = {
     routing: {
