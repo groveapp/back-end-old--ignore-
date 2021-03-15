@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:10.1-alpine
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data/
+      - .:/usr/src/groveapp-backend
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=grove
+    ports:
+      - "5432:5432"
+
