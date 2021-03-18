@@ -31,7 +31,11 @@ In /src:
 
 #### Running and Testing the Server
 
-First, make sure you have Node.js with npm installed, and clone this whole "back-end" repository into a suitable folder. Run "npm install" in /server/src to install all the needed packages. Then run "npm start" (still in /server/src), and you should be off to the races.
+First, make sure you have Node.js with npm installed, and clone this whole "back-end" repository into a suitable folder. 
+
+Insert the database username and password into "/config/development.json" (ask to get them if you don't have them already).
+
+Run "npm install" in /server/src to install all the needed packages. Then run "npm start" (still in /server/src), and you should be off to the races.
 
 If the node environment hasn't been set, run the command SET NODE_ENV=development.
 
