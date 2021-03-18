@@ -2,8 +2,8 @@
 	"ENV":	"development",
 	"DB_HOST": "ec2-52-7-115-250.compute-1.amazonaws.com",
 	"DB_PORT": 5432,
-	"DB_USERNAME": "bnbunfysjkxdbw",
-	"DB_PASSWORD": "a727ce396753f4b9826432ce9c604015c11ce567d0b02d62c3ad3ea5b37a8f77",
+	"DB_USERNAME": ,
+	"DB_PASSWORD": ,
 	"DB_POOL_SIZE": 20,
 	"LOGGING_DB": false
 }
