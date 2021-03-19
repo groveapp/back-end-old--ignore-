@@ -5,7 +5,7 @@ var http = require('http');
 //var https = require('https');
 
 var oas3Tools = require('oas3-tools');
-var serverPort = 8080;
+var serverPort = process.env.PORT || 8080;
 
 const express = require("express");
 
