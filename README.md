@@ -39,7 +39,7 @@ Run "npm install" in /server/src to install all the needed packages. Then run "n
 
 If the node environment hasn't been set, run the command SET NODE_ENV=development.
 
-To test the endpoints (only "/api/test" and "/api/test/{id}" work right now), you can either go to them in your browser (https://localhost:8080), or get the [Advanced Rest Client Chrome Extension](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo), which makes it easier to test UPDATE and POST requests.
+To test the endpoints (only "/api/test" and "/api/test/{id}" work right now), you can either go to them in your browser (http://localhost:8080), or get the [Advanced Rest Client Chrome Extension](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo), which makes it easier to test UPDATE and POST requests.
 
 #### Adding a controller function
 
