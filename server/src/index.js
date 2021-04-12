@@ -4,7 +4,6 @@ var path = require('path');
 var http = require('http');
 //var https = require('https');
 
-var oas3Tools = require('oas3-tools');
 var serverPort = process.env.PORT || 8080;
 
 const express = require("express");
@@ -12,7 +11,7 @@ const express = require("express");
 const initConfig = require('./config');
 const chalk = require('chalk');
 //const app = require('./app');
-const initConnection = require('./sequelize');
+const initConnection = require('./Sequelize');
 const initControllers = require('./controllers');
 const initModels = require('./models/init-models');
 const initRoutes = require('./routes');
@@ -70,6 +69,6 @@ const initRoutes = require('./routes');
 		disapprovals: 0,
 		approvalrating: 5.0
 		});
-	console.log('newleader: ',newLeader.id);
+	console.log('newleader: ', newLeader.id);
 
 })();

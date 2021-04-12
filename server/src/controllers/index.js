@@ -1,78 +1,27 @@
-// const createPost = async (req, res) => {
-//   try {
-//     const post = await dbModels.Post.create(req.body);
-//     return res.status(201).json({
-//       post,
-//     });
-//   } catch (error) {
-//     return res.status(500).json({error: error.message})
-//   }
-// }
-
-// const getUserById = async (req, res) => {
-//     try {
-//         const { userId } = req.params;
-//         const user = await dbModels.User.findOne({
-//             where: { id: userId },
-//             include: [
-//                 {
-//                     model: dbModels.Viewpoints,
-//                     as: 'viewpoints'
-//                 }
-//             ]
-//         });
-//         if (user) {
-//             return res.status(200).json({ user });
-//         }
-//         return res.status(404).json('try again')
-//     } catch (error) {return res.status(500).send(error.message)}
-// }
-
-// const getTestById = async (req, res) => {
-//     try {
-//         const { testId } = req.params;
-//         const user = await dbModels.Test.findOne({
-//             where: { id: testId },
-//         });
-//         if (test) {
-//             return res.status(200).json({ test });
-//         }
-//         return res.status(404).json('try again')
-//     } catch (error) {return res.status(500).send(error.message)}
-// }
-
-// // const getLeaderById = async (req, res) => {
-// //     try {
-// //         const { userId } = req.params;
-// //         const user = await dbModels.User.findOne({
-// //             where: { id: userId },
-// //             include: [
-// //                 {
-// //                     model: dbModels.Viewpoints,
-// //                     as: 'viewpoints'
-// //                 }
-// //             ]
-// //         });
-// //         if (user) {
-// //             return res.status(200).json({ post });
-// //         }
-// //         return res.status(404).json('try again')
-// //     } catch (error) {return res.status(500).send(error.message)}
-// // }
-
-// module.exports = {
-// //   createPost,
-// //   getUserById,
-//   getTestById
-// }
-
-
 const test = require('./test.js');
+const issues = require('./issues.js')
+const leaderActions = require('./leaderActions.js')
+const leaders = require('./leaders.js')
+const organizations = require('./organizations.js')
+const rawVotes = require('./rawVotes.js')
+const replies = require('./replies.js')
+const users = require('./users.js')
+const viewpoints = require('./viewpoints.js')
+const census = require('./census.js')
 
 
 module.exports = function(logger, models) {
 
 	return Promise.resolve( {
-		test: test(logger, models)
+		test: test(logger, models),
+		issues: issues(logger, models),
+		leaderActions: leaderActions(logger, models),
+		leaders: leaders(logger, models),
+		organizations: organizations(logger, models),
+		rawVotes: rawVotes(logger, models),
+		replies: replies(logger, models),
+		users: users(logger, models),
+		viewpoints: viewpoints(logger, models),
+		census: census(logger, models),
 	});
 }
