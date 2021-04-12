@@ -105,3 +105,6 @@ dist
 
 #development
 server/config/
+
+#Census data
+estimates/cpspb/

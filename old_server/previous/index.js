@@ -9,11 +9,8 @@ var serverPort = 8080;
 
 const { Pool } = require('pg');
 
-//"dbname=d2vus41esp5fhj host=ec2-52-7-115-250.compute-1.amazonaws.com port=5432 user=bnbunfysjkxdbw password=a727ce396753f4b9826432ce9c604015c11ce567d0b02d62c3ad3ea5b37a8f77 sslmode=require"
-//postgres://bnbunfysjkxdbw:a727ce396753f4b9826432ce9c604015c11ce567d0b02d62c3ad3ea5b37a8f77@ec2-52-7-115-250.compute-1.amazonaws.com:5432/d2vus41esp5fhj
-
 const pool = new Pool({
-  connectionString: "postgres://bnbunfysjkxdbw:a727ce396753f4b9826432ce9c604015c11ce567d0b02d62c3ad3ea5b37a8f77@ec2-52-7-115-250.compute-1.amazonaws.com:5432/d2vus41esp5fhj",
+  connectionString: "postgres://username:password@link",
   //process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false } //process.env.DATABASE_URL ? true : false
 });

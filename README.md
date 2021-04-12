@@ -5,7 +5,7 @@ We're using a PostgreSQL database, and the server is written in Node.js with Seq
 
 ### Database
 
-You can check out our [data model](https://dbdiagram.io/d/604903fffcdcb6230b238639) to get a sense for the types of data that can be stored in our database. We have a database running on Heroku's free tier.
+You can check out our [data model](https://dbdiagram.io/d/604903fffcdcb6230b238639) to get a sense for the types of data that can be stored in our database. We have a database running on Heroku's free tier. To see what's in the database, it'll probably be helpful to download [PostgreSQL](https://www.postgresql.org/) on your computer, or at least just [pgAdmin](https://www.pgadmin.org/). pgAdmin lets you view the data in the database, if you sign in with the right credentials.
 
 ### Server
 
@@ -31,11 +31,17 @@ In /src:
 
 #### Running and Testing the Server
 
-First, make sure you have Node.js with npm installed, and clone this whole "back-end" repository into a suitable folder. Run "npm install" in /server/src to install all the needed packages. Then run "npm start" (still in /server/src), and you should be off to the races.
+First, make sure you have Node.js with npm installed, and clone this whole "back-end" repository into a suitable folder. 
+
+Insert the database username and password into "/config/development.json" (ask to get them if you don't have them already).
+
+Run "npm install" in /server/src to install all the needed packages. Then run "npm start" (still in /server/src), and you should be off to the races.
 
 If the node environment hasn't been set, run the command SET NODE_ENV=development.
 
-To test the endpoints (only "/api/test" and "/api/test/{id}" work right now), you can either go to them in your browser (https://localhost:8080), or get the [Advanced Rest Client Chrome Extension](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo), which makes it easier to test UPDATE and POST requests.
+To test the endpoints (only "/api/test" and "/api/test/{id}" work right now), you can either go to them in your browser (http://localhost:8080), or get the [Advanced Rest Client Chrome Extension](https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo), which makes it easier to test UPDATE and POST requests.
+
+We also have a deployed server on Heroku [here](https://grove-backend.herokuapp.com/), with the same working endpoints (for now).
 
 #### Adding a controller function
 
