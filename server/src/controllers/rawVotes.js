@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const RawVote = models.RawVote;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getRawVoteById: async (req, res, next) => {
+        const {rawVoteId} = req.params;
+        await RawVote.findOne({where: {id: rawVoteId}}).then( rawVote => {
+            res.send( {rawVote} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
+    getAllRawVote: async (req, res, next) => {
+        const {rawVoteId} = req.params;
+        await RawVote.findAll().then( rawVote => {
+            res.send( {rawVote: rawVote.map( v => {return {id: v.id, name: v.name}})} );
         }).catch(next)
     },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    createRawVote: async (req, res, next) => {
+            const rawVote = await RawVote.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            rawVote => {res.send( {rawVote} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateRawVote: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {rawVoteId} = req.params;
+            const [updated] = await RawVote.update(req.body, {where: {id: rawVoteId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteRawVote: async (req, res, next) => {
+            const {rawVoteId} = req.params;
+            const deleted = await RawVote.destroy(
+                {where: { id: rawVoteId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            rawVote => {res.send( {rawVote} )} ).catch(next)
     },
 }
 

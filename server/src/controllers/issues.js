@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const Issue = models.Issue;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getIssueById: async (req, res, next) => {
+        const {issueId} = req.params;
+        await Issue.findOne({where: {id: issueId}}).then( issue => {
+            res.send( {issue} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
-        }).catch(next)
-    },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    // getAllIssue: async (req, res, next) => {
+    //     const {issueId} = req.params;
+    //     await Issue.findAll().then( issue => {
+    //         res.send( {issue: issue.map( v => {return {id: v.id, name: v.name}})} );
+    //     }).catch(next)
+    // },
+    createIssue: async (req, res, next) => {
+            const issue = await Issue.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            issue => {res.send( {issue} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateIssue: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {issueId} = req.params;
+            const [updated] = await Issue.update(req.body, {where: {id: issueId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteIssue: async (req, res, next) => {
+            const {issueId} = req.params;
+            const deleted = await Issue.destroy(
+                {where: { id: issueId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            issue => {res.send( {issue} )} ).catch(next)
     },
 }
 

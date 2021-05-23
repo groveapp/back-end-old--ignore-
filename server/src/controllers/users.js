@@ -1,38 +1,48 @@
 module.exports = function(logger, models) {
 
     const User = models.User;
+    const User_Organization = models.Users_Organization;
+    const User_Leader = models.Users_Leaders;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getUserById: async (req, res, next) => {
+        const {userId} = req.params;
+        await User.findOne({where: {id: userId}}).then( user => {
+            res.send( {user} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
-        }).catch(next)
-    },
-    createTest: async (req, res, next) =>  {
-            const test = await Test.create(
+    // getUsersByOrganization: async (req, res, next) => {
+    //     const {organizationId} = req.params;
+    //     await User_Organization.findAll({where: {id: organizationId}}).dataValues.userId
+    //     .then( user => {
+    //         res.send( {user} )
+    //     }).catch(next)
+    // },
+    
+    // getAllTest: async (req, res, next) => {
+    //     const {testId} = req.params;
+    //     await Test.findAll().then( test => {
+    //         res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
+    //     }).catch(next)
+    // },
+    createUser: async (req, res, next) =>  {
+            const user = await User.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            user => {res.send( {user} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateUser: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {userId} = req.params;
+            const [updated] = await User.update(req.body, {where: {id: userId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteUser: async (req, res, next) => {
+            const {userId} = req.params;
+            const deleted = await User.destroy(
+                {where: { id: userId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            user => {res.send( {user} )} ).catch(next)
     },
 }
 

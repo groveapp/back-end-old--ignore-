@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const LeaderAction = models.LeaderAction;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getLeaderActionById: async (req, res, next) => {
+        const {leaderActionId} = req.params;
+        await LeaderAction.findOne({where: {id: leaderActionId}}).then( leaderAction => {
+            res.send( {leaderAction} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
-        }).catch(next)
-    },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    // getAllLeaderAction: async (req, res, next) => {
+    //     const {leaderActionId} = req.params;
+    //     await LeaderAction.findAll().then( leaderAction => {
+    //         res.send( {leaderAction: leaderAction.map( v => {return {id: v.id, name: v.name}})} );
+    //     }).catch(next)
+    // },
+    createLeaderAction: async (req, res, next) => {
+            const leaderAction = await LeaderAction.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            leaderAction => {res.send( {leaderAction} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateLeaderAction: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {leaderActionId} = req.params;
+            const [updated] = await LeaderAction.update(req.body, {where: {id: leaderActionId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteLeaderAction: async (req, res, next) => {
+            const {leaderActionId} = req.params;
+            const deleted = await LeaderAction.destroy(
+                {where: { id: leaderActionId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            leaderAction => {res.send( {leaderAction} )} ).catch(next)
     },
 }
 

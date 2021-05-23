@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const Leader = models.Leader;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getLeaderById: async (req, res, next) => {
+        const {leaderId} = req.params;
+        await Leader.findOne({where: {id: leaderId}}).then( leader => {
+            res.send( {leader} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
-        }).catch(next)
-    },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    // getAllLeader: async (req, res, next) => {
+    //     const {leaderId} = req.params;
+    //     await Test.findAll().then( test => {
+    //         res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
+    //     }).catch(next)
+    // },
+    createLeader: async (req, res, next) => {
+            const test = await Leader.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            leader => {res.send( {leader} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateLeader: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {leaderId} = req.params;
+            const [updated] = await Leader.update(req.body, {where: {id: leaderId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteLeader: async (req, res, next) => {
+            const {leaderId} = req.params;
+            const deleted = await Leader.destroy(
+                {where: { id: leaderId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            leader => {res.send( {leader} )} ).catch(next)
     },
 }
 

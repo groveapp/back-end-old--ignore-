@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const Organization = models.Organization;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getOrganizationById: async (req, res, next) => {
+        const {orgId} = req.params;
+        await Organization.findOne({where: {id: orgId}}).then( org => {
+            res.send( {org} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
-        }).catch(next)
-    },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    // getAllOrganization: async (req, res, next) => {
+    //     const {orgId} = req.params;
+    //     await Organization.findAll().then( org => {
+    //         res.send( {org: org.map( v => {return {id: v.id, name: v.name}})} );
+    //     }).catch(next)
+    // },
+    createOrganization: async (req, res, next) => {
+            const org = await Organization.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            org => {res.send( {org} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateOrganization: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {orgId} = req.params;
+            const [updated] = await Organization.update(req.body, {where: {id: orgId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteOrganization: async (req, res, next) => {
+            const {orgId} = req.params;
+            const deleted = await Organization.destroy(
+                {where: { id: orgId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            org => {res.send( {org} )} ).catch(next)
     },
 }
 

@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const Reply = models.Reply;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getReplyById: async (req, res, next) => {
+        const {replyId} = req.params;
+        await Reply.findOne({where: {id: replyId}}).then( reply => {
+            res.send( {reply} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
+    getAllReply: async (req, res, next) => {
+        const {replyId} = req.params;
+        await Reply.findAll().then( reply => {
+            res.send( {reply: reply.map( v => {return {id: v.id, name: v.name}})} );
         }).catch(next)
     },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    createReply: async (req, res, next) => {
+            const reply = await Reply.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            reply => {res.send( {reply} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateReply: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {replyId} = req.params;
+            const [updated] = await Reply.update(req.body, {where: {id: replyId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteReply: async (req, res, next) => {
+            const {replyId} = req.params;
+            const deleted = await Reply.destroy(
+                {where: { id: replyId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            reply => {res.send( {reply} )} ).catch(next)
     },
 }
 

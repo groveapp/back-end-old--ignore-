@@ -6,7 +6,8 @@ return {
     getTestById: async (req, res, next) => {
         const {testId} = req.params;
         await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+            res.send( {test} );
+            console.log(test.dataValues.name)
         }).catch(next)
     },
     getAllTest: async (req, res, next) => {

@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const Viewpoint = models.Viewpoint;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getViewpointById: async (req, res, next) => {
+        const {viewpointId} = req.params;
+        await Viewpoint.findOne({where: {id: viewpointId}}).then( viewpoint => {
+            res.send( {viewpoint} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
+    getAllViewpoint: async (req, res, next) => {
+        const {viewpointId} = req.params;
+        await Viewpoint.findAll().then( viewpoint => {
+            res.send( {viewpoint: viewpoint.map( v => {return {id: v.id, name: v.name}})} );
         }).catch(next)
     },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    createViewpoint: async (req, res, next) => {
+            const viewpoint = await Viewpoint.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            viewpoint => {res.send( {viewpoint} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateViewpoint: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {viewpointId} = req.params;
+            const [updated] = await Viewpoint.update(req.body, {where: {id: viewpointId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteViewpoint: async (req, res, next) => {
+            const {viewpointId} = req.params;
+            const deleted = await Viewpoint.destroy(
+                {where: { id: viewpointId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            viewpoint => {res.send( {viewpoint} )} ).catch(next)
     },
 }
 

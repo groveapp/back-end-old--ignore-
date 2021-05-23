@@ -1,38 +1,38 @@
 module.exports = function(logger, models) {
 
-    const Test = models.Test;
+    const Census = models.Census;
 
 return {
-    getTestById: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findOne({where: {id: testId}}).then( test => {
-            res.send( {test} )
+    getCensusById: async (req, res, next) => {
+        const {censusId} = req.params;
+        await Census.findOne({where: {id: censusId}}).then( census => {
+            res.send( {census} )
         }).catch(next)
     },
-    getAllTest: async (req, res, next) => {
-        const {testId} = req.params;
-        await Test.findAll().then( test => {
-            res.send( {test: test.map( v => {return {id: v.id, name: v.name}})} );
+    getAllCensus: async (req, res, next) => {
+        const {censusId} = req.params;
+        await Census.findAll().then( census => {
+            res.send( {census: census.map( v => {return {id: v.id, name: v.name}})} );
         }).catch(next)
     },
-    createTest: async (req, res, next) => {
-            const test = await Test.create(
+    createCensus: async (req, res, next) => {
+            const census = await Census.create(
                 req.body
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            census => {res.send( {census} )} ).catch(next)
     },
-    updateTest: async (req, res, next) => {
+    updateCensus: async (req, res, next) => {
         
-            const {testId} = req.params;
-            const [updated] = await Test.update(req.body, {where: {id: testId}}).then(
+            const {censusId} = req.params;
+            const [updated] = await Census.update(req.body, {where: {id: censusId}}).then(
                 updated => {res.send( {updated} )}).catch(next)
     },   
-    deleteTest: async (req, res, next) => {
-            const {testId} = req.params;
-            const deleted = await Test.destroy(
-                {where: { id: testId}}
+    deleteCensus: async (req, res, next) => {
+            const {censusId} = req.params;
+            const deleted = await Census.destroy(
+                {where: { id: censusId}}
                 ).then(
-            test => {res.send( {test} )} ).catch(next)
+            census => {res.send( {census} )} ).catch(next)
     },
 }
 
