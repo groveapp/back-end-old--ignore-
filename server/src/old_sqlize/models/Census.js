@@ -24,31 +24,31 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     ethnicity: {
-      type: DataTypes.ENUM("white","black","asian","latinx","amerind_ak","pacific_islander","2_or_more","other"),
+      type: DataTypes.ENUM("2_or_more","amerind_ak","asian","black","latinx","other","pacific_islander","white"),
       allowNull: true
     },
     income: {
-      type: DataTypes.ENUM("less_than_10k","10k_20k","10k_30k","30k_40k","40k_50k","60k_70k","70k_80k","80k_90k","90k_100k","100k_110k","110k_120k","120k_130k","130k_140k","140k_150k","more_than_150k"),
+      type: DataTypes.ENUM("100k_110k","10k_20k","10k_30k","110k_120k","120k_130k","130k_140k","140k_150k","30k_40k","40k_50k","60k_70k","70k_80k","80k_90k","90k_100k","less_than_10k","more_than_150k"),
       allowNull: true
     },
     education: {
-      type: DataTypes.ENUM("less_high_school","some_high_school","high_school_diploma","some_college","bachelor_degree","some_graduate","graduate_degree"),
+      type: DataTypes.ENUM("bachelor_degree","graduate_degree","high_school_d_iploma","less_high_school","some_college","some_graduate","some_high_school"),
       allowNull: true
     },
     party_affiliation: {
-      type: DataTypes.ENUM("Republican","Democratic","Independent","Libertarian","Green","Other","Unknown"),
+      type: DataTypes.ENUM("Democratic","Green","Independent","Libertarian","Other","Republican","Unknown"),
       allowNull: true
     },
     prim_language: {
-      type: DataTypes.ENUM("english","spanish","german","chinese","tagalog","vietnamese","french","other"),
+      type: DataTypes.ENUM("chinese","english","french","german","other","spanish","tagalog","vietnamese"),
       allowNull: true
     },
     occupation: {
-      type: DataTypes.ENUM("not_employed_not_seeking","self_employed","not_employed_seeking","management_business","professional","service","sales","admin_support","farming_fishing_forestry","construction_mining","installation_maintenance_repair","manufacturing_production","transportation","armed_forces"),
+      type: DataTypes.ENUM("admin_support","armed_forces","construction_mining","farming_fishing_forestry","installation_maintenance_repair","management_business","manufacturing_production","not_employed_not_seeking","not_employed_seeking","professional","sales","self_employed","service","transportation"),
       allowNull: true
     },
     marital_status: {
-      type: DataTypes.ENUM("married","divorced","separated","widowed","never_married"),
+      type: DataTypes.ENUM("d_ivorced","married","never_married","separated","widowed"),
       allowNull: true
     },
     numChildren: {

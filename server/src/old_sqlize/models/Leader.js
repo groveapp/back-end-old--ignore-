@@ -7,11 +7,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true
     },
-    organizationId: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'Organization',
+        model: 'User',
         key: 'id'
       }
     },
@@ -27,11 +27,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-    approvals: {
+    approval_s: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    disapprovals: {
+    d_isapproval_s: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
@@ -44,11 +44,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     party: {
-      type: DataTypes.ENUM("Republican","Democratic","Independent","Libertarian","Green","Other","Unknown"),
-      allowNull: true
-    },
-    votingRecord: {
-      type: DataTypes.JSON,
+      type: DataTypes.ENUM("Democratic","Green","Independent","Libertarian","Other","Republican","Unknown"),
       allowNull: true
     }
   }, {

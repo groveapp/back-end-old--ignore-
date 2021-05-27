@@ -1,11 +1,22 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Census', {
-    personId: {
-      autoIncrement: true,
+  return sequelize.define('Profile', {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      references: {
+        model: 'User',
+        key: 'id'
+      }
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     address: {
       type: DataTypes.STRING,
@@ -35,7 +46,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.ENUM("less_high_school","some_high_school","high_school_diploma","some_college","bachelor_degree","some_graduate","graduate_degree"),
       allowNull: true
     },
-    party_affiliation: {
+    party: {
       type: DataTypes.ENUM("Republican","Democratic","Independent","Libertarian","Green","Other","Unknown"),
       allowNull: true
     },
@@ -57,15 +68,15 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     sequelize,
-    tableName: 'Census',
+    tableName: 'Profile',
     schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "Census_pkey",
+        name: "Profile_pkey",
         unique: true,
         fields: [
-          { name: "personId" },
+          { name: "id" },
         ]
       },
     ]

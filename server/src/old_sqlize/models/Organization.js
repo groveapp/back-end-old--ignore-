@@ -1,8 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Issue', {
+  return sequelize.define('Organization', {
     id: {
-      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
@@ -11,34 +10,22 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
-    summary: {
+    area: {
       type: DataTypes.STRING,
       allowNull: true
     },
-    total_votes: {
-      type: DataTypes.INTEGER,
+    image: {
+      type: "BYTEA",
       allowNull: true
-    },
-    isBill: {
-      type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    organizationId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'Organization',
-        key: 'id'
-      }
     }
   }, {
     sequelize,
-    tableName: 'Issue',
+    tableName: 'Organization',
     schema: 'public',
-    timestamps: false,
+    timestamps: true,
     indexes: [
       {
-        name: "Issue_pkey",
+        name: "Organization_pkey",
         unique: true,
         fields: [
           { name: "id" },

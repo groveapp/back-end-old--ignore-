@@ -52,3 +52,5 @@ We also have a deployed server on Heroku [here](https://grove-backend.herokuapp.
 ### Previous Versions
 
 The "old_server" file contains a previous version of our database, as well as two old server setups.
+
+SEQUELIZE-AUTO: sequelize-auto -h ec2-3-218-71-191.compute-1.amazonaws.com -d dbgffg1nnn253r -u kqyjnjnpcdhxda -x c05d07b3e67c5868a56d528db697c9dd28cd30d8f9c887ea3b7b3612c1612c19 -p 5432  --dialect postgres -c ."/sequelize-auto.config.json" -o "./models"

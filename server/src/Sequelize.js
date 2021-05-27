@@ -11,7 +11,7 @@ return  new Sequelize({
     host: config.DB_HOST,
     port: config.DB_PORT,
     username: config.DB_USERNAME,
-    database: 'd4tcnqbn1nkava',
+    database: 'dbgffg1nnn253r',
     password: config.DB_PASSWORD,
     omitNull: false,
     pool: {

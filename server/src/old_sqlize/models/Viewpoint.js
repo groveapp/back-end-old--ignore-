@@ -5,13 +5,9 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
-    },
-    issueId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+      primaryKey: true,
       references: {
-        model: 'Issue',
+        model: 'Organization',
         key: 'id'
       }
     },
@@ -19,15 +15,19 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true
     },
+    agrees: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     pop_estimate: {
       type: DataTypes.DOUBLE,
       allowNull: true
     },
-    upvotes: {
+    replies: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    userId: {
+    createdBy: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {

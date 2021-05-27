@@ -1,48 +1,32 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Viewpoint', {
+  return sequelize.define('Issue', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
-    },
-    issueId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+      primaryKey: true,
       references: {
-        model: 'Issue',
+        model: 'Organization',
         key: 'id'
       }
     },
-    text: {
-      type: DataTypes.STRING,
-      allowNull: true
-    },
-    pop_estimate: {
-      type: DataTypes.DOUBLE,
-      allowNull: true
-    },
-    upvotes: {
+    total_votes: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    userId: {
+    isBill: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'User',
-        key: 'id'
-      }
+      allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'Viewpoint',
+    tableName: 'Issue',
     schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "Viewpoint_pkey",
+        name: "Issue_pkey",
         unique: true,
         fields: [
           { name: "id" },
