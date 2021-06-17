@@ -6,7 +6,7 @@ var _Organization = require("./Organization");
 var _Profile = require("./Profile");
 var _RawVote = require("./RawVote");
 var _User = require("./User");
-var _Users_Organizations = require("./Users_Organizations");
+var _Users_Organizations = require("./User_Organization");
 var _Viewpoint = require("./Viewpoint");
 
 function initModels(sequelize) {
