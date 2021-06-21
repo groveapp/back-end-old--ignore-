@@ -1,5 +1,5 @@
 // This function will read the config files in the config folder
-// based on the procss.NODE.ENV variable. E.g process.env.NODE_ENV = dev 
+// based on the procss.NODE.ENV variable. E.g process.env.NODE_ENV = dev
 // will read the config-dev.json
 
 const chalk = require('chalk');
@@ -16,9 +16,9 @@ module.exports = function() {
 	console.log('Current environment context ',environment);
 
 	//Read config file
-	const filename = path.join('../config',environment+'.json');
+	const filename = path.join('./config',environment+'.json');
 	console.log(chalk.blue('Accessing config file ', filename));
-	
+
 	const content = require(filename);
 
 	console.log(content);

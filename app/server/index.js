@@ -38,7 +38,6 @@ const initRoutes = require('./routes');
 
 
 	//bootstrap the app and listen
-
 	const server = express();
 	server.use(express.json());
 
@@ -46,7 +45,7 @@ const initRoutes = require('./routes');
 	//setup routes to controllers
 	const routes = await initRoutes(server,controllers);
 
-	server.use('/api', routes);
+
 	server.listen(serverPort, () => console.log(`Listening on ${ serverPort }`));
 
 	//await app(controllers);
@@ -58,7 +57,7 @@ const initRoutes = require('./routes');
 	const leaders = await leader.findAll();
  	leaders.every( v => {
 		console.log(v.id, ',', v.firstname);
-	});	
+	});
 
 	const newLeader = await dbModels.Leader.create( {
 		id: Math.floor(Math.random()*100000),
