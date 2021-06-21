@@ -6,8 +6,7 @@ import helmet from 'helmet';
 import logger from 'morgan';
 import session from 'express-session';
 import passport from 'passport';
-
-const routes = require('./routes');
+import { routes } from './routes';
 
 const app = express();
 
@@ -49,7 +48,23 @@ const { initModels } = require('./models/init-models');
 initModels(sequelize);
 
 
+import { WalkDirAndCollectJsFiles } from './utils/utils';
+
+
+WalkDirAndCollectJsFiles(`${__dirname}/routes`).forEach((file) => {
+    /* eslint-disable-next-line */
+    const addFileRoutes = require(file).default;
+
+    if (typeof addFileRoutes === 'function') {
+        addFileRoutes(app);
+    } else {
+        /* eslint-disable-next-line no-console */
+        console.log(`🚨 ${file} did not export a function to add routes 🚨`);
+    }
+});
+
+
 /* Add routes to app */
-routes(app);
+// routes(app);
 
 export default app;
