@@ -3,16 +3,31 @@ const chalk = require('chalk');
 
 //const sequelizeLogger = logger.child({component: 'sequelize'});
 
+const configFile = require('./config/config');
 
-function init(config) {
-console.log(chalk.blue('Using following config for database connection: '),config);
-return  new Sequelize({
+const db = {};
+
+
+
+const env = process.env.NODE_ENV || 'development';
+
+//Configure database based on environment variable setting
+let config;
+if(env === 'development') {
+    config = configFile.development;
+}
+else {
+    config = configFile.production;
+}
+
+
+let sequelize = new Sequelize({
     dialect: 'postgres',
-    host: config.DB_HOST,
-    port: config.DB_PORT,
-    username: config.DB_USERNAME,
-    database: 'dbgffg1nnn253r',
-    password: config.DB_PASSWORD,
+    host: config.host,
+    port: config.port,
+    username: config.username,
+    database: config.database,
+    password: config.password,
     omitNull: false,
     pool: {
         max: config.DB_POOL_SIZE,
@@ -22,7 +37,7 @@ return  new Sequelize({
         ssl: { rejectUnauthorized: false } //process.env.NODE_ENV === 'development' ? 'allow' : 'require'
     },
     native: false,
-    
+
     // http://docs.sequelizejs.com/manual/tutorial/querying.html#operators
     //operatorsAliases: false,
 
@@ -30,9 +45,12 @@ return  new Sequelize({
         config.LOGGING_DB ? (msg, sequelize) => console.log({sequelize}, msg) : false
     )
 });
-}
+
+
+
+
 //npx sequelize-auto -h ec2-52-7-115-250.compute-1.amazonaws.com -d d2vus41esp5fhj -u bnbunfysjkxdbw -x a727ce396753f4b9826432ce9c604015c11ce567d0b02d62c3ad3ea5b37a8f77 -p 5432  --dialect postgres -o "./models"
-module.exports = init;
+module.exports.sequelize = sequelize;
 
 
 

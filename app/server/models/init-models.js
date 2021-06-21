@@ -51,4 +51,5 @@ function initModels(sequelize) {
     Viewpoint,
   };
 }
-module.exports = initModels;
+
+module.exports.initModels = initModels;

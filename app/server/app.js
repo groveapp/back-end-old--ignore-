@@ -44,8 +44,9 @@ app.use(passport.session());
 
 //Run config and sequalize setup
 // require('./config')();
-require('./Sequelize')();
-require('./models/init-models')();
+const { sequelize } = require('./Sequelize');
+const { initModels } = require('./models/init-models');
+initModels(sequelize);
 
 
 /* Add routes to app */
